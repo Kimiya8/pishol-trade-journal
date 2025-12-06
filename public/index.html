@@ -1,23 +1,118 @@
+Kimia Mirzaei, [12/6/2025 7:17 PM]
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pishol Trade Journal</title>
-    <link rel="stylesheet" href="../src/styles/main.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pishol Trade Journal — Advanced</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../src/styles/main.css" />
+
+  <!-- Chart.js (ESM build via CDN not needed; using global build) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Firebase (compat libs so کدنویسی ساده باشه) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+
+  <!--
+    IMPORTANT:
+    بعد از ایجاد پروژهٔ Firebase، اینجا یک اسکریپت با FIREBASE_CONFIG قرار بده.
+    نمونه (مقدارها را از Console کپی کن):
+
+    <script>
+      window.FIREBASE_CONFIG = {
+        apiKey: "API_KEY",
+        authDomain: "PROJECT_ID.firebaseapp.com",
+        projectId: "PROJECT_ID",
+        storageBucket: "PROJECT_ID.appspot.com",
+        messagingSenderId: "SENDER_ID",
+        appId: "APP_ID"
+      };
+    </script>
+
+    من در README نحوهٔ گرفتن این مقدارها را کامل توضیح دادم.
+  -->
 </head>
 <body>
-    <div id="app">
-        <h1>Pishol Trade Journal</h1>
-        <div id="trade-form">
-            <input id="pair" placeholder="Symbol (e.g. EURUSD)" />
-            <input id="direction" placeholder="Direction (Buy/Sell)" />
-            <input id="entry" placeholder="Entry Price" />
-            <input id="exit" placeholder="Exit Price" />
-            <button id="save">Save Trade</button>
+  <div id="container">
+    <header>
+      <h1>Pishol Trade Journal</h1>
+      <div id="user-area">
+        <div id="auth-forms">
+          <input id="email" placeholder="ایمیل" />
+          <input id="password" placeholder="رمز عبور" type="password" />
+          <button id="btn-signup">ثبت‌نام</button>
+          <button id="btn-login">ورود</button>
+          <button id="btn-logout" style="display:none">خروج</button>
         </div>
+        <div id="user-info" style="display:none"></div>
+      </div>
+    </header>
+
+    <main>
+      <section id="trade-section">
+        <h2>ثبت ترید جدید</h2>
+        <div id="trade-form">
+          <input id="asset" placeholder="نماد (مثلاً EURUSD)" />
+          <select id="market">
+            <option>Forex</option><option>Crypto</option><option>CFD</option><option>Futures</option><option>Stocks</option>
+          </select>
+          <select id="direction">
+            <option value="Long">Long / Buy</option>
+            <option value="Short">Short / Sell</option>
+          </select>
+          <input id="entryPrice" placeholder="قیمت ورود" type="number" step="any" />
+          <input id="stopLoss" placeholder="Stop Loss" type="number" step="any" />
+          <input id="exitPrice" placeholder="قیمت خروج" type="number" step="any" />
+          <input id="size" placeholder="حجم / سایز" type="number" step="any" />
+          <input id="fees" placeholder="هزینه‌ها (fees)" type="number" step="any" />
+          <input id="date" placeholder="تاریخ" type="datetime-local" />
+          <input id="tags" placeholder="تگ‌ها (با کاما جدا کن)" />
+          <input id="strategy" placeholder="ستاپ / استراتژی" />
+          <textarea id="notes" placeholder="یادداشت‌ها و احساسات"></textarea>
+
+          <label>آپلود اسکرین‌شات (اختیاری)</label>
+          <input id="screenshot" type="file" accept="image/*" />
+
+          <button id="save-trade">ذخیره ترید</button>
+          <small id="save-msg" class="muted"></small>
+        </div>
+      </section>
+
+      <section id="list-section">
+        <h2>لیست تریدها</h2>
+        <div class="controls">
+          <input id="search" placeholder="جستجو در نماد یا یادداشت..." />
+          <select id="filter-market">
+            <option value="All">همه بازارها</option>
+            <option>Forex</option><option>Crypto</option><option>CFD</option><option>Futures</option><option>Stocks</option>
+          </select>
+          <button id="export-csv">خروجی CSV</button>
+          <button id="sync-now">سینک دستی</button>
+        </div>
+        <div id="stats"></div>
         <div id="trades"></div>
-    </div>
-    <script src="../src/app.js"></script>
+      </section>
+
+Kimia Mirzaei, [12/6/2025 7:17 PM]
+<section id="charts-section">
+        <h2>داشبورد</h2>
+        <div class="chart-row">
+          <canvas id="equityChart" height="120"></canvas>
+          <canvas id="winrateChart" height="120"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>نسخه پیشرفته — ذخیره آنلاین با Firebase</small>
+    </footer>
+  </div>
+
+  <!-- اپلیکیشن -->
+  <script type="module" src="../src/app.js"></script>
 </body>
 </html>
