@@ -1,4 +1,4 @@
-Kimia Mirzaei, [12/6/2025 7:17 PM]
+Kimia Mirzaei, [12/6/2025 8:54 PM]
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -7,34 +7,27 @@ Kimia Mirzaei, [12/6/2025 7:17 PM]
   <title>Pishol Trade Journal — Advanced</title>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="../src/styles/main.css" />
+  <link rel="stylesheet" href="src/styles/main.css" />
 
-  <!-- Chart.js (ESM build via CDN not needed; using global build) -->
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Firebase (compat libs so کدنویسی ساده باشه) -->
+  <!-- Firebase (compat libraries) -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 
-  <!--
-    IMPORTANT:
-    بعد از ایجاد پروژهٔ Firebase، اینجا یک اسکریپت با FIREBASE_CONFIG قرار بده.
-    نمونه (مقدارها را از Console کپی کن):
-
-    <script>
-      window.FIREBASE_CONFIG = {
-        apiKey: "API_KEY",
-        authDomain: "PROJECT_ID.firebaseapp.com",
-        projectId: "PROJECT_ID",
-        storageBucket: "PROJECT_ID.appspot.com",
-        messagingSenderId: "SENDER_ID",
-        appId: "APP_ID"
-      };
-    </script>
-
-    من در README نحوهٔ گرفتن این مقدارها را کامل توضیح دادم.
-  -->
+  <!-- Firebase Config -->
+  <script>
+    window.FIREBASE_CONFIG = {
+      apiKey: "AIzaSyDJG_61-49-UaOzJQDS76sHckwyfwRFDoQ",
+      authDomain: "pishol-trade-journal.firebaseapp.com",
+      projectId: "pishol-trade-journal",
+      storageBucket: "pishol-trade-journal.firebasestorage.app",
+      messagingSenderId: "424449369296",
+      appId: "1:424449369296:web:eace506e65be28104eaad5"
+    };
+  </script>
 </head>
 <body>
   <div id="container">
@@ -97,8 +90,7 @@ Kimia Mirzaei, [12/6/2025 7:17 PM]
         <div id="trades"></div>
       </section>
 
-Kimia Mirzaei, [12/6/2025 7:17 PM]
-<section id="charts-section">
+      <section id="charts-section">
         <h2>داشبورد</h2>
         <div class="chart-row">
           <canvas id="equityChart" height="120"></canvas>
@@ -112,7 +104,8 @@ Kimia Mirzaei, [12/6/2025 7:17 PM]
     </footer>
   </div>
 
-  <!-- اپلیکیشن -->
-  <script type="module" src="../src/app.js"></script>
+Kimia Mirzaei, [12/6/2025 8:54 PM]
+<!-- اپلیکیشن -->
+  <script type="module" src="src/app.js"></script>
 </body>
 </html>
