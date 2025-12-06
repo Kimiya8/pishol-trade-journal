@@ -1,0 +1,39 @@
+body {
+    background: #111;
+    color: #eee;
+    font-family: Arial, sans-serif;
+}
+
+#app {
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.trade-item {
+    background: #222;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+}
